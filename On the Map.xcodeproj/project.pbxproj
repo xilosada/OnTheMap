@@ -30,7 +30,6 @@
 		DCA81D341BDB997A00D5B85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCA81D331BDB997A00D5B85E /* Assets.xcassets */; };
 		DCA81D371BDB997A00D5B85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCA81D351BDB997A00D5B85E /* LaunchScreen.storyboard */; };
 		DCA81D3F1BDC94B200D5B85E /* UdacityApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA81D3E1BDC94B200D5B85E /* UdacityApiClient.swift */; };
-		DCA81D411BDC9B9600D5B85E /* ParseApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA81D401BDC9B9600D5B85E /* ParseApiClient.swift */; };
 		DCA81D431BDC9F2D00D5B85E /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA81D421BDC9F2D00D5B85E /* StudentInformation.swift */; };
 		DCA81D451BDCA40600D5B85E /* ParseApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA81D441BDCA40600D5B85E /* ParseApiConstants.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		DCA81D361BDB997A00D5B85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCA81D381BDB997A00D5B85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCA81D3E1BDC94B200D5B85E /* UdacityApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityApiClient.swift; sourceTree = "<group>"; };
-		DCA81D401BDC9B9600D5B85E /* ParseApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseApiClient.swift; path = ../ParseApiClient.swift; sourceTree = "<group>"; };
 		DCA81D421BDC9F2D00D5B85E /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		DCA81D441BDCA40600D5B85E /* ParseApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseApiConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				DC08DB071BF09BE800863E6B /* ParseApiClient.swift */,
-				DCA81D401BDC9B9600D5B85E /* ParseApiClient.swift */,
 				DCA81D441BDCA40600D5B85E /* ParseApiConstants.swift */,
 			);
 			name = Parse;
@@ -290,7 +287,6 @@
 				DC9DDDFE1BEA7C160087006D /* MainTabViewController.swift in Sources */,
 				DCA81D431BDC9F2D00D5B85E /* StudentInformation.swift in Sources */,
 				DC08DB041BF04EB400863E6B /* ViewControllerConvenience.swift in Sources */,
-				DCA81D411BDC9B9600D5B85E /* ParseApiClient.swift in Sources */,
 				DCA81D451BDCA40600D5B85E /* ParseApiConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
