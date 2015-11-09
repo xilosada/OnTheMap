@@ -13,6 +13,7 @@
 		DC08DB021BF04E3C00863E6B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC08DB011BF04E3C00863E6B /* FBSDKLoginKit.framework */; };
 		DC08DB041BF04EB400863E6B /* ViewControllerConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08DB031BF04EB400863E6B /* ViewControllerConvenience.swift */; };
 		DC08DB061BF06B5800863E6B /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08DB051BF06B5800863E6B /* ApiClient.swift */; };
+		DC08DB081BF09BE800863E6B /* ParseApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08DB071BF09BE800863E6B /* ParseApiClient.swift */; };
 		DC4923FC1BEB047A003DC0F6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4923FB1BEB047A003DC0F6 /* TableViewController.swift */; };
 		DC4923FE1BEB04FC003DC0F6 /* SLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4923FD1BEB04FC003DC0F6 /* SLTableViewCell.swift */; };
 		DC4924001BEB080C003DC0F6 /* StudentCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4923FF1BEB080C003DC0F6 /* StudentCache.swift */; };
@@ -41,6 +42,7 @@
 		DC08DB011BF04E3C00863E6B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		DC08DB031BF04EB400863E6B /* ViewControllerConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerConvenience.swift; sourceTree = "<group>"; };
 		DC08DB051BF06B5800863E6B /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		DC08DB071BF09BE800863E6B /* ParseApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseApiClient.swift; sourceTree = "<group>"; };
 		DC4923FB1BEB047A003DC0F6 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		DC4923FD1BEB04FC003DC0F6 /* SLTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLTableViewCell.swift; sourceTree = "<group>"; };
 		DC4923FF1BEB080C003DC0F6 /* StudentCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCache.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		DC9DDE081BEAC8DE0087006D /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				DC08DB071BF09BE800863E6B /* ParseApiClient.swift */,
 				DCA81D401BDC9B9600D5B85E /* ParseApiClient.swift */,
 				DCA81D441BDCA40600D5B85E /* ParseApiConstants.swift */,
 			);
@@ -277,6 +280,7 @@
 				DCA81D3F1BDC94B200D5B85E /* UdacityApiClient.swift in Sources */,
 				DC08DB061BF06B5800863E6B /* ApiClient.swift in Sources */,
 				DCA81D2F1BDB997A00D5B85E /* LoginViewController.swift in Sources */,
+				DC08DB081BF09BE800863E6B /* ParseApiClient.swift in Sources */,
 				DCA81D2D1BDB997A00D5B85E /* AppDelegate.swift in Sources */,
 				DC4924001BEB080C003DC0F6 /* StudentCache.swift in Sources */,
 				DC9DDDEA1BE9A5970087006D /* MapViewController.swift in Sources */,
