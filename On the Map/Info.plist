@@ -36,5 +36,57 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <!-- Adding Fonts -->
+    <key>UIAppFonts</key>
+    <array>
+        <string>Roboto-Medium.ttf</string>
+        <string>Roboto-Regular.ttf</string>
+        <string>Roboto-Thin.ttf</string>
+    </array>
+    <!-- Whitelist Facebook Servers -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>facebook.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key> <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key> <false/>
+            </dict>
+            <key>fbcdn.net</key>
+            <dict>
+                <key>NSIncludesSubdomains</key> <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>  <false/>
+            </dict>
+            <key>akamaihd.net</key>
+            <dict>
+                <key>NSIncludesSubdomains</key> <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key> <false/>
+            </dict>
+        </dict>
+    </dict>
+    <!-- Whitelist Facebook Apps -->
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    
+    <!-- Whitelist Facebook Apps -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb365362206864879</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>365362206864879</string>
+    <key>FacebookDisplayName</key>
+    <string>On the Map</string>
 </dict>
 </plist>
