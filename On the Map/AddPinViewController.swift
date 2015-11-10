@@ -127,7 +127,7 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
                             self.placemark =  firstPlacemark
                             self.changeToSubmitMode()
                         }else{
-                            self.showError("Invalid Placemark")
+                            self.showError("More precision is needed")
                         }
                     }
                     else{
