@@ -11,13 +11,18 @@ import UIKit
 import FBSDKLoginKit
 import MapKit
 
-class MainTabViewController: UITabBarController, SubmitLocationDelegate{
+class MainTabViewController: UITabBarController, StudentInformationDelegate{
     
-    var childControllers: [UIViewController]?
+    var tableViewController : TableViewController!
+    var mapViewController : MapViewController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        childControllers = self.viewControllers
+        childViewControllers[0]
+        mapViewController = childViewControllers[0] as! MapViewController
+        tableViewController = childViewControllers[1] as! TableViewController
+        tableViewController.delegate = self
         reloadLocations()
     }
 
@@ -28,7 +33,7 @@ class MainTabViewController: UITabBarController, SubmitLocationDelegate{
     */
     @IBAction func logoutPressed(sender: AnyObject) {
         let udapi = UdacityApiClient.getSharedInstance()
-        if(udapi.loggedWithUdacity){
+        if udapi.loggedWithUdacity{
             udapi.logout({result, error in
             })
         }else{
@@ -61,20 +66,16 @@ class MainTabViewController: UITabBarController, SubmitLocationDelegate{
     }
     
     func onLocationSubmitted(coord: CLLocationCoordinate2D) {
+        reloadLocations()
         dispatch_async(dispatch_get_main_queue(),{
-            self.reloadLocations()
-            (self.childControllers![0] as! MapViewController).centerMap(coord)
+            self.mapViewController.centerMap(coord)
         })
     }
     
-    /**
-        SPEC:
-        The user sees an alert if the post fails.
-    */
-    func onPostError(error:NSError){
-        showError(error.localizedDescription)
+    func onLocationDeleted(studentInfo:StudentInformation)->Void {
+        self.reloadLocations()
     }
-    
+
     func reloadLocations(){
         let parseApi = ParseApiClient.getSharedInstance()
         parseApi.getStudentLocations { (results, error) -> Void in
@@ -89,11 +90,13 @@ class MainTabViewController: UITabBarController, SubmitLocationDelegate{
     }
     
     func reloadMap(){
-        (childControllers![0] as! MapViewController).updateMapPins()
+        mapViewController.updateMapPins()
     }
     
     func reloadTable(){
-        (childControllers![1] as! TableViewController).tableView.reloadData()
+        dispatch_async(dispatch_get_main_queue(),{
+            self.tableViewController.tableView.reloadData()
+        })
     }
     
     func showConfirmationDialog(message:String,onAccepted:(UIAlertAction)->Void){

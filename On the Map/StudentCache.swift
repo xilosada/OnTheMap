@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StudentCache : NSObject{
+class StudentCache{
     
     /**
      SPEC:

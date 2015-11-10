@@ -51,22 +51,23 @@ class ParseApiClient: ApiClient{
         executeDataRequest(HTTPMethods.GET,endpoint: endpoint, completionHandler:completionHandler)
     }
     
-    func postLocation(userId:String,firstname:String,lastName:String,mapString: String,
-        mediaURL:String,latitude:Double,longitude:Double,handler:(flag:Bool,error:NSError?)->Void){
-        let bodyDict = generateBodyDict(userId,firstname: firstname,lastName: lastName,mapString: mapString,
-            mediaURL: mediaURL,latitude: latitude,longitude: longitude)
+    func postLocation(studentInfo:StudentInformation ,handler:(flag:Bool,error:NSError?)->Void){
+        let bodyDict = generateBodyDict(studentInfo)
         let endpoint = Constants._baseUrl + Methods._studentLocations
         executeDataRequest(HTTPMethods.POST,endpoint: endpoint, body: bodyDict, handler:handler)
     }
     
-    func updateLocation(objectId:String, userId:String,firstname:String,lastName:String,mapString: String,
-        mediaURL:String,latitude:Double,longitude:Double,handler:(flag:Bool,error:NSError?)->Void){
-        let bodyDict = generateBodyDict(userId,firstname: firstname,lastName: lastName,mapString: mapString,
-            mediaURL: mediaURL,latitude: latitude,longitude: longitude)
-        let endpoint = Constants._baseUrl + Methods._studentLocations + "/" + objectId
+    func updateLocation(studentInfo:StudentInformation ,handler:(flag:Bool,error:NSError?)->Void){
+        let bodyDict = generateBodyDict(studentInfo)
+        let endpoint = Constants._baseUrl + Methods._studentLocations + "/" + studentInfo.objectId!
         executeDataRequest(HTTPMethods.PUT,endpoint: endpoint, body: bodyDict, handler:handler)
     }
     
+    
+    func deleteLocation(studentInfo:StudentInformation ,handler:(flag:Bool,error:NSError?)->Void){
+        let endpoint = Constants._baseUrl + Methods._studentLocations + "/" + studentInfo.objectId!
+        executeDataRequest(HTTPMethods.DELETE,endpoint: endpoint, handler:handler)
+    }
     /**
         SPEC:
         The networking code uses Swift's built-in NSURLSession library, not a third-party framework.
@@ -106,9 +107,12 @@ class ParseApiClient: ApiClient{
         let task = session.dataTaskWithRequest(generateNetworkRequest(httpMethod, endpoint: endpoint, body: body)){ data, response, error in
             if error != nil {
                 handler(flag:false,error:error)
-                return
             }
-            else{
+            else if self.responseHasErrorCodes(response as! NSHTTPURLResponse){
+                let requestError = NSError(domain: "Invalid Request Error ", code: ErrorCodes._parsingError, userInfo: [NSLocalizedDescriptionKey: "Sorry we are having problems"])
+                handler(flag:false,error:requestError)
+            }
+            else {
                 self.parseJSONWithCompletionHandler(data!,completionHandler: {
                     (jsonResult,error) in
                     if let error = error { // Handle error…
@@ -122,15 +126,15 @@ class ParseApiClient: ApiClient{
         task.resume()
     }
     
-    func generateBodyDict(userId:String,firstname:String,lastName:String,mapString: String,mediaURL:String,latitude:Double,longitude:Double)->[String:AnyObject]{
+    func generateBodyDict(studentInfo: StudentInformation)->[String:AnyObject]{
         var bodyDict = [String:AnyObject]()
-        bodyDict[JsonResponseKeys._uniqueKey] = userId
-        bodyDict[JsonResponseKeys._firstName] = firstname
-        bodyDict[JsonResponseKeys._lastName] = lastName
-        bodyDict[JsonResponseKeys._mapString] = mapString
-        bodyDict[JsonResponseKeys._mediaURL] = mediaURL
-        bodyDict[JsonResponseKeys._latitude] = latitude
-        bodyDict[JsonResponseKeys._longitude] = longitude
+        bodyDict[JsonResponseKeys._uniqueKey] = studentInfo.uniqueKey
+        bodyDict[JsonResponseKeys._firstName] = studentInfo.firstName
+        bodyDict[JsonResponseKeys._lastName] = studentInfo.lastName
+        bodyDict[JsonResponseKeys._mapString] = studentInfo.mapString
+        bodyDict[JsonResponseKeys._mediaURL] = studentInfo.mediaURL
+        bodyDict[JsonResponseKeys._latitude] = studentInfo.latitude
+        bodyDict[JsonResponseKeys._longitude] = studentInfo.longitude
         return bodyDict
     }
     

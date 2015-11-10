@@ -14,7 +14,7 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
     
     var geoCoder: CLGeocoder!
     var lastPositionId: String?
-    var delegate: SubmitLocationDelegate?
+    var delegate: StudentInformationDelegate?
     var placemark: CLPlacemark?
     var searchMode: Bool = true
     var activityIndicatorView: UIActivityIndicatorView?
@@ -38,13 +38,14 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
     */
     @IBOutlet weak var confirmButton: UIButton!
     
-    static func presentController(controller:UIViewController,delegate:SubmitLocationDelegate?=nil,updatePositionId:String?=nil)->AddPinViewController{
+    static func presentController(controller:UIViewController,delegate:StudentInformationDelegate?=nil,updatePositionId:String?=nil){
         let mStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
         let addPinViewControler:AddPinViewController = mStoryBoard.instantiateViewControllerWithIdentifier("AddPinViewController") as! AddPinViewController
         addPinViewControler.delegate = delegate
         addPinViewControler.lastPositionId = updatePositionId
-        controller.presentViewController(addPinViewControler, animated: true, completion: nil)
-        return addPinViewControler
+        dispatch_async(dispatch_get_main_queue(),{
+            controller.presentViewController(addPinViewControler, animated: true, completion: nil)
+        })
     }
     
     override func viewDidLoad() {
@@ -90,7 +91,7 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
             //http://stackoverflow.com/questions/17266093/
-            mapView.setRegion(MKCoordinateRegionMake(coordinate,MKCoordinateSpan(latitudeDelta: 100,longitudeDelta: 100)), animated: true)
+            mapView.setRegion(MKCoordinateRegionMake(coordinate,MKCoordinateSpan(latitudeDelta: 1,longitudeDelta: 1)), animated: true)
         }else{
             showError("Not found a valid position")
             changeToSearchMode()
@@ -119,11 +120,15 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
                 that stores the resulting latitude and longitude.
             */
             if let address = inputTextView.text {
-                CLGeocoder().geocodeAddressString(address) { (placemarks, error) -> Void in
+                CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
                     self.enableUIElements()
                     if let firstPlacemark = placemarks?[0] {
-                        self.placemark =  firstPlacemark
-                        self.changeToSubmitMode()
+                        if self.placemarkIsValid(firstPlacemark){
+                            self.placemark =  firstPlacemark
+                            self.changeToSubmitMode()
+                        }else{
+                            self.showError("Invalid Placemark")
+                        }
                     }
                     else{
                         //SPEC: The app displays an alert if the geocoding fails.
@@ -134,15 +139,28 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
                 self.showError("Error geocoding")
             }
         } else{
-            let udapi = UdacityApiClient.getSharedInstance()
             let parseapi = ParseApiClient.getSharedInstance()
-            let coordinate: CLLocationCoordinate2D = (placemark?.location?.coordinate)!
-            if let updateId = lastPositionId {
-                parseapi.updateLocation(updateId,userId:udapi.userID!, firstname: udapi.userFirstName!, lastName: udapi.userLastName!, mapString: (placemark?.locality)!, mediaURL: inputTextView.text!, latitude: coordinate.latitude, longitude: coordinate.longitude, handler: pinUploadDidFinish)
+            let studentInfo = generateStudentInformationObject()
+            if let _ = studentInfo.objectId {
+                parseapi.updateLocation(studentInfo, handler: pinUploadDidFinish)
             }else{
-                parseapi.postLocation(udapi.userID!, firstname: udapi.userFirstName!, lastName: udapi.userLastName!, mapString: (placemark?.locality)!, mediaURL: inputTextView.text!, latitude: coordinate.latitude, longitude: coordinate.longitude,handler: pinUploadDidFinish)
+                parseapi.postLocation(studentInfo,handler: pinUploadDidFinish)
             }
         }
+    }
+    
+    func generateStudentInformationObject() -> StudentInformation{
+        let udapi = UdacityApiClient.getSharedInstance()
+        var studentInfoDict = [String:AnyObject]()
+        studentInfoDict[ParseApiClient.JsonResponseKeys._objectId] = lastPositionId
+        studentInfoDict[ParseApiClient.JsonResponseKeys._uniqueKey] = udapi.userID
+        studentInfoDict[ParseApiClient.JsonResponseKeys._firstName] = udapi.userFirstName
+        studentInfoDict[ParseApiClient.JsonResponseKeys._lastName] = udapi.userLastName
+        studentInfoDict[ParseApiClient.JsonResponseKeys._mediaURL] = inputTextView.text!
+        studentInfoDict[ParseApiClient.JsonResponseKeys._mapString] = placemark?.locality
+        studentInfoDict[ParseApiClient.JsonResponseKeys._latitude] = placemark?.location?.coordinate.latitude
+        studentInfoDict[ParseApiClient.JsonResponseKeys._longitude] = placemark?.location?.coordinate.longitude
+        return StudentInformation(dictionary: studentInfoDict)
     }
 
     func enableUIElements(){
@@ -160,7 +178,7 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
         The app shows additional indications of activity, such as modifying alpha/transparency of interface elements.
     */
     func enableUIElements(enabled:Bool){
-        self.view.alpha = enabled ? 1 : 0.3
+        view.alpha = enabled ? 1 : 0.3
         inputTextView.enabled = enabled
         confirmButton.enabled = enabled
     }
@@ -168,10 +186,18 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
     func pinUploadDidFinish(flag:Bool,error:NSError?){
         self.enableUIElements()
         if let error = error{
-            self.delegate?.onPostError(error)
+            /// SPEC: The user sees an alert if the post fails.
+            showError(error.localizedDescription)
         }else{
-            self.delegate?.onLocationSubmitted((self.placemark?.location?.coordinate)!)
+            delegate?.onLocationSubmitted((self.placemark?.location?.coordinate)!)
+            dismissViewFromMainQueue()
         }
-        self.dismissViewFromMainQueue()
+    }
+    
+    func placemarkIsValid(placemark: CLPlacemark?) -> Bool{
+        if let _ = placemark?.locality {
+            return true
+        }
+        return false
     }
 }

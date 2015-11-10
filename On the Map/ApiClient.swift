@@ -78,4 +78,11 @@ class ApiClient: NSObject{
         
         return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
     }
+    
+    func responseHasErrorCodes(response:NSHTTPURLResponse)->Bool{
+        if case 200 ..< 300 = response.statusCode {
+            return false
+        }
+        return true
+    }
 }

@@ -17,8 +17,12 @@ extension UIViewController{
         The app uses an Alert View Controller to notify the user if the login connection fails. 
      */
     func showError(message:String){
+        showAlert("Error", message: message)
+    }
+    
+    func showAlert(title:String,message:String ){
         dispatch_async(dispatch_get_main_queue(),{
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         })

@@ -19,6 +19,8 @@ class TableViewController: UITableViewController {
     let _font_name_subtitle = "Roboto-Medium"
     let _font_name_title = "Roboto-Regular.ttf"
     
+    var delegate: StudentInformationDelegate?
+    
     var studentInformations: [StudentInformation]! {
         return StudentCache.getSharedInstance().getData()
     }
@@ -75,4 +77,28 @@ class TableViewController: UITableViewController {
         uiLabel.textColor = isTitle ? UIColor.blackColor() : UIColor.grayColor()
     }
     
+    /**
+        Delete a StudentInformation from server if logged user is the owner
+    */
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete{
+            let studentInfo = studentInformations[indexPath.row]
+            let userId = UdacityApiClient.getSharedInstance().userID
+            
+            if studentInfo.uniqueKey == userId{
+                ParseApiClient.getSharedInstance().deleteLocation(studentInfo, handler: {flag,error in
+                    if flag {
+                        //studentInformations.removeAtIndex(indexPath.row)
+                        self.showAlert("Operation Success", message: "Pin deleted")
+                        self.delegate?.onLocationDeleted(studentInfo)
+                    }else{
+                        self.showError(flag ? "Eliminado": (error?.localizedDescription)!)
+                    }
+                })
+            }else{
+                self.showError("Is not your Pin. Your ID \(userId) != \(studentInfo.uniqueKey)) ")
+            }
+        }
+    }
 }

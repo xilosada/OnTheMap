@@ -1,5 +1,5 @@
 //
-//  SubmitLocationDelegate.swift
+//  StudentInformationDelegate.swift
 //  On the Map
 //
 //  Created by X.I. Losada on 08/11/15.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-protocol SubmitLocationDelegate{
+protocol StudentInformationDelegate {
     func onLocationSubmitted(coord:CLLocationCoordinate2D)->Void
-    func onPostError(error:NSError)
+    func onLocationDeleted(studentInfo:StudentInformation)->Void
 }

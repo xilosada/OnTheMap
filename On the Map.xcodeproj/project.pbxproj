@@ -10,14 +10,14 @@
 		DC08DAFE1BF0442000863E6B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC08DAFB1BF0442000863E6B /* Roboto-Medium.ttf */; };
 		DC08DAFF1BF0442000863E6B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC08DAFC1BF0442000863E6B /* Roboto-Regular.ttf */; };
 		DC08DB001BF0442000863E6B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC08DAFD1BF0442000863E6B /* Roboto-Thin.ttf */; };
-		DC08DB021BF04E3C00863E6B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC08DB011BF04E3C00863E6B /* FBSDKLoginKit.framework */; };
 		DC08DB041BF04EB400863E6B /* ViewControllerConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08DB031BF04EB400863E6B /* ViewControllerConvenience.swift */; };
 		DC08DB061BF06B5800863E6B /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08DB051BF06B5800863E6B /* ApiClient.swift */; };
 		DC08DB081BF09BE800863E6B /* ParseApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08DB071BF09BE800863E6B /* ParseApiClient.swift */; };
+		DC08DB0A1BF0DA8F00863E6B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC08DB091BF0DA8F00863E6B /* FBSDKLoginKit.framework */; };
 		DC4923FC1BEB047A003DC0F6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4923FB1BEB047A003DC0F6 /* TableViewController.swift */; };
 		DC4923FE1BEB04FC003DC0F6 /* SLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4923FD1BEB04FC003DC0F6 /* SLTableViewCell.swift */; };
 		DC4924001BEB080C003DC0F6 /* StudentCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4923FF1BEB080C003DC0F6 /* StudentCache.swift */; };
-		DC55D9D01BEF0C0600F36189 /* SubmitLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC55D9CF1BEF0C0600F36189 /* SubmitLocationDelegate.swift */; };
+		DC55D9D01BEF0C0600F36189 /* StudentInformationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC55D9CF1BEF0C0600F36189 /* StudentInformationDelegate.swift */; };
 		DC9DDDEA1BE9A5970087006D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DDDE91BE9A5970087006D /* MapViewController.swift */; };
 		DC9DDDF31BE9B5330087006D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9DDDF11BE9B5330087006D /* FBSDKCoreKit.framework */; };
 		DC9DDDF81BE9D6430087006D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9DDDF71BE9D6430087006D /* MapKit.framework */; };
@@ -38,14 +38,14 @@
 		DC08DAFB1BF0442000863E6B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		DC08DAFC1BF0442000863E6B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		DC08DAFD1BF0442000863E6B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		DC08DB011BF04E3C00863E6B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		DC08DB031BF04EB400863E6B /* ViewControllerConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerConvenience.swift; sourceTree = "<group>"; };
 		DC08DB051BF06B5800863E6B /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		DC08DB071BF09BE800863E6B /* ParseApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseApiClient.swift; sourceTree = "<group>"; };
+		DC08DB091BF0DA8F00863E6B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		DC4923FB1BEB047A003DC0F6 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		DC4923FD1BEB04FC003DC0F6 /* SLTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLTableViewCell.swift; sourceTree = "<group>"; };
 		DC4923FF1BEB080C003DC0F6 /* StudentCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCache.swift; sourceTree = "<group>"; };
-		DC55D9CF1BEF0C0600F36189 /* SubmitLocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitLocationDelegate.swift; sourceTree = "<group>"; };
+		DC55D9CF1BEF0C0600F36189 /* StudentInformationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformationDelegate.swift; sourceTree = "<group>"; };
 		DC9DDDE91BE9A5970087006D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DC9DDDF11BE9B5330087006D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DC9DDDF71BE9D6430087006D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -71,7 +71,7 @@
 			files = (
 				DC9DDDF81BE9D6430087006D /* MapKit.framework in Frameworks */,
 				DC9DDDF31BE9B5330087006D /* FBSDKCoreKit.framework in Frameworks */,
-				DC08DB021BF04E3C00863E6B /* FBSDKLoginKit.framework in Frameworks */,
+				DC08DB0A1BF0DA8F00863E6B /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 		DC68FD9C1BE1A6AA00D156A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DC08DB011BF04E3C00863E6B /* FBSDKLoginKit.framework */,
+				DC08DB091BF0DA8F00863E6B /* FBSDKLoginKit.framework */,
 				DC9DDDF71BE9D6430087006D /* MapKit.framework */,
 				DC9DDDF11BE9B5330087006D /* FBSDKCoreKit.framework */,
 			);
@@ -124,7 +124,7 @@
 				DC9DDDFD1BEA7C160087006D /* MainTabViewController.swift */,
 				DC9DDDFF1BEA7F570087006D /* AddPinViewController.swift */,
 				DC4923FB1BEB047A003DC0F6 /* TableViewController.swift */,
-				DC55D9CF1BEF0C0600F36189 /* SubmitLocationDelegate.swift */,
+				DC55D9CF1BEF0C0600F36189 /* StudentInformationDelegate.swift */,
 				DC08DB031BF04EB400863E6B /* ViewControllerConvenience.swift */,
 			);
 			name = Controller;
@@ -283,7 +283,7 @@
 				DC9DDDEA1BE9A5970087006D /* MapViewController.swift in Sources */,
 				DC9DDE001BEA7F570087006D /* AddPinViewController.swift in Sources */,
 				DC9DDE071BEAC7CA0087006D /* UdacityClientConstants.swift in Sources */,
-				DC55D9D01BEF0C0600F36189 /* SubmitLocationDelegate.swift in Sources */,
+				DC55D9D01BEF0C0600F36189 /* StudentInformationDelegate.swift in Sources */,
 				DC9DDDFE1BEA7C160087006D /* MainTabViewController.swift in Sources */,
 				DCA81D431BDC9F2D00D5B85E /* StudentInformation.swift in Sources */,
 				DC08DB041BF04EB400863E6B /* ViewControllerConvenience.swift in Sources */,
@@ -389,12 +389,11 @@
 		DCA81D3C1BDB997A00D5B85E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/On",
-					the,
-					Map,
+					"$(PROJECT_DIR)/On\\ the\\ Map",
 				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -408,9 +407,13 @@
 		DCA81D3D1BDB997A00D5B85E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					the,
+					Map,
 					"$(PROJECT_DIR)/On",
 					the,
 					Map,
