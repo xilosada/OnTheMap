@@ -25,10 +25,6 @@ class TableViewController: UITableViewController {
         return StudentCache.getSharedInstance().getData()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return studentInformations.count
     }

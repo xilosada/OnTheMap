@@ -23,6 +23,10 @@ class MainTabViewController: UITabBarController, StudentInformationDelegate{
         mapViewController = childViewControllers[0] as! MapViewController
         tableViewController = childViewControllers[1] as! TableViewController
         tableViewController.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         reloadLocations()
     }
 
